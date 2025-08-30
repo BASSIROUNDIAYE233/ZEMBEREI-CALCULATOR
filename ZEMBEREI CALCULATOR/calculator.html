@@ -1,0 +1,105 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Calculatrice Simple</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <style>
+        /* styles/main.css */
+.calculator {
+  width: 220px;
+  margin: 50px auto;
+  padding: 20px;
+  border: 2px solid #f5f3f3;
+  border-radius: 10px;
+  background: #030100ef;
+}
+.calculator input {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  font-size: 1.2em;
+  text-align: right;
+}
+.calculator button {
+  width: 48px;
+  height: 40px;
+  margin: 2px;
+  font-size: 1.1em;
+  background-color: rgb(148, 151, 152);
+}
+/* styles/main.css */
+.operator{
+  background-color: #e9910d !important;
+  color: #fff;
+  border: none;
+}
+.center-white {
+  color: white ;
+  text-align: center;
+
+}
+    </style>
+  <div class="calculator">
+    <input type="text" id="display" disabled>
+    <div>
+        <p class="center-white">ZEMBEREI CALCULATOR</p>
+      <button onclick="append('7')">7</button>
+      <button onclick="append('8')">8</button>
+      <button onclick="append('9')">9</button>
+    <button class="operator"onclick="append('/')">/</button>
+    </div>
+    <div>
+      <button onclick="append('4')">4</button>
+      <button onclick="append('5')">5</button>
+      <button onclick="append('6')">6</button>
+      <button class="operator"onclick="append('*')">*</button>
+    </div>
+    <div>
+      <button onclick="append('1')">1</button>
+      <button onclick="append('2')">2</button>
+      <button onclick="append('3')">3</button>
+      <button class="operator"onclick="append('-')">-</button>
+    </div>
+    <div>
+        <button onclick="backspace()">[x]</button>
+      <button onclick="append('0')">0</button>
+      <button onclick="append('.')">.</button>
+      <button class="operator" onclick="append('+')">+</button>
+    </div>
+    <div>
+      <button onclick="clearDisplay()">C</button>
+       <button onclick="append('%')">%</button>
+       <button onclick="append('**')">^</button>
+       <button class="operator" onclick="calculate()">=</button>
+    </div>
+  </div>
+  <script src="scripts/calculator.js"></script>
+    <script>
+    // scripts/calculator.js
+let display = document.getElementById('display');
+
+function append(char) {
+  display.value += char;
+}
+// scripts/calculator.js
+function backspace() {
+  display.value = display.value.slice(0, -1);
+}
+function calculate() {
+  try {
+    display.value = eval(display.value);
+  } catch {
+    display.value = 'Erreur';
+  }
+}
+
+function clearDisplay() {
+  display.value = '';
+}
+  </script>
+</body>
+</html>
